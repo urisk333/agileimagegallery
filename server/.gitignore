@@ -1,0 +1,9 @@
+# Dependency directories
+node_modules/
+
+# OS generated files
+.DS_Store
+
+# DB credentials
+.env
+models/.env
