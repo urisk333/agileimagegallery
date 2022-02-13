@@ -20,12 +20,16 @@ function addImage (image: Image): Promise<Image> {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({image})
+    body: JSON.stringify({...image})
   });
 }
 
 function getImages (): Promise<Image[]> {
   return fetchRequest('/images');
+}
+
+function getOneImage (id: number): Promise<Image> {
+  return fetchRequest(`/images/${id}`)
 }
 
 function addComment (comment: Comment): Promise<Comment> {
@@ -60,6 +64,7 @@ const APIService = {
   getUsers,
   addImage,
   getImages,
+  getOneImage,
   addComment,
   getComments,
   updateComment,

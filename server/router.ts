@@ -9,6 +9,7 @@ router.post("/users", controller.addUser);
 router.get("/users", controller.getUsers);
 router.post("/images", controller.addImage);
 router.get("/images", controller.getImages);
+router.get("/images/:id", controller.getOneImage);
 router.post("/comments", controller.addComment);
 router.get("/comments", controller.getComments);
 router.put("/comments/:id", controller.updateComment);

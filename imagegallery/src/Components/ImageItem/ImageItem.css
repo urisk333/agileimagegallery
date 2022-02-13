@@ -1,0 +1,25 @@
+.image-item-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  width: 750px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px gray;
+}
+
+.image-item-container:hover {
+  box-shadow: 0 0 16px gray;
+}
+
+.item-image-picture {
+  width: 600px;
+  height: 350px;
+  object-fit: cover;
+  margin-top: 75px;
+}
+
+.item-image-description {
+  margin-top: 20px;
+}

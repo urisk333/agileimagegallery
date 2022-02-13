@@ -1,0 +1,172 @@
+.homepage-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.review-item-container {
+  margin: auto;
+  margin-bottom: 440px;
+}
+
+.image-list {
+  display: block;
+  width: 360px;
+  height: 1000px;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.image-list h2 {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.image-list-item {
+  margin: 40px 0 40px 0;
+}
+
+.image-list::-webkit-scrollbar,
+.textarea-align::-webkit-scrollbar {
+  width: 4px;
+}
+
+.image-list::-webkit-scrollbar-track,
+.textarea-align::-webkit-scrollbar {
+  background: white;
+}
+
+.image-list::-webkit-scrollbar-thumb,
+.textarea-align::-webkit-scrollbar {
+  background-color: #fec210;
+  border-radius: 2px;
+}
+
+.image-picture-box {
+  width: 150px;
+  height: 100px;
+  margin: 0 25px 0 25px;
+}
+
+.image-picture {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.image-item-align {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: auto;
+  width: 300px;
+  height: 150px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px gray;
+}
+
+.gallery-button,
+.add-image-button,
+.submit-button,
+.cancel-button {
+  height: 40px;
+  width: 90px;
+  margin: 20px 0 0 27px;
+  background-color: #277a7f;
+  border-radius: 2px;
+  color: white;
+  box-shadow: 2px 2px 4px gray;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.gallery-button:hover,
+.add-image-button:hover,
+.submit-button:hover,
+.cancel-button:hover {
+  color: black;
+}
+
+.search-input,
+.add-image-input {
+  width: 300px;
+  height: 48px;
+  padding-left: 10px;
+  border: 2px solid gray;
+  margin: 40px 0 0 27px;
+  border-radius: 4px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bolder;
+  color: #277a7f;
+}
+
+.search-input:focus,
+.add-image-input:focus {
+  outline: none !important;
+  border: 2px solid #277a7f;
+  box-shadow: 0 0 10px gray;
+}
+
+.fa-magnifying-glass {
+  position: relative;
+  color: gray;
+  font-size: 28px;
+  right: 12%;
+  vertical-align: middle;
+}
+
+.add-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.add-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-image-label {
+  margin: 0 0 4px 27px;
+  font-weight: 700;
+}
+
+.add-image-input {
+  width: 300px;
+  height: 48px;
+  padding-left: 10px;
+  border: 2px solid gray;
+  margin: 0 0 0 27px;
+  border-radius: 4px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bolder;
+  color: #277a7f;
+}
+
+.align {
+  margin-bottom: 20px;
+}
+
+.textarea-align {
+  max-width: 300px;
+  min-width: 300px;
+  min-height: 96px;
+  max-height: 96px;
+  padding-top: 12px;
+}
+
+.review-button {
+  position: fixed;
+  top: 90%;
+  right: 4%;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: #fec210;
+  padding-top: 2px;
+}

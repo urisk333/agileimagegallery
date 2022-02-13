@@ -9,7 +9,7 @@ export type Image = {
   id: number,
   name: string,
   image: string,
-  description: number,
+  description: string,
   userId: number
 }
 

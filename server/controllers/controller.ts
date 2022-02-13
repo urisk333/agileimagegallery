@@ -31,11 +31,17 @@ const getUsers = async (req: Request, res: Response): Promise<void> => {
 
 const addImage = async (req: Request, res: Response): Promise<void> => {
 	try {
-		const image = await prisma.image.create({
-      data: req.body
-    });
+		const { name, image, description, userId } = req.body;
+		const newImage = await prisma.image.create({
+			data: {
+						name: name,
+						image: image,
+						description: description,
+						userId: userId				
+			}		
+		});
 		res.status(201);
-		res.send(image);
+		res.send(newImage);
 	} catch (err) {
 		console.error('error', err);
 		res.sendStatus(500);
@@ -47,6 +53,29 @@ const getImages = async (req: Request, res: Response): Promise<void> => {
 		const images = await prisma.image.findMany();
 		res.status(200);
 		res.send(images);
+	} catch (err) {
+		console.error('error', err);
+		res.sendStatus(500);
+	}
+};
+
+const getOneImage = async (req: Request, res: Response): Promise<void> => {
+	try {
+		const id = +req.params.id;
+		const image = await prisma.image.findUnique({
+			where: {
+				id
+			},
+			select: {
+				id: true,
+				name: true,	
+        image: true,
+        description: true,
+        userId: true	
+			}
+		});
+		res.status(200);
+		res.send(image);
 	} catch (err) {
 		console.error('error', err);
 		res.sendStatus(500);
@@ -66,7 +95,6 @@ const addComment = async (req: Request, res: Response): Promise<void> => {
 		res.sendStatus(500);
 	}
 };
-
 
 const getComments = async (req: Request, res: Response): Promise<void> => {
 	try {
@@ -116,6 +144,7 @@ const controller = {
   getUsers,
   addImage,
   getImages,
+	getOneImage,
   addComment,
   getComments,
   updateComment,

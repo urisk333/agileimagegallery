@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from 'Components/NavBar/NavBar';
 import LoginForm from 'Components/LoginForm/LoginForm';
 import Dashboard from 'Components/Dashboard/Dashboard';
+import HomePage from 'Components/HomePage/HomePage';
 import APIService from 'Services/APIServices';
 import { User, Image, Comment, LoginData } from 'Types/Types';
 import { useState, useEffect, useMemo } from 'react';
@@ -56,6 +57,8 @@ function App () {
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<LoginForm userLogin={userLogin} error={error} />} />
+            <Route path='/homepage' element={<HomePage images={images} setImages={setImages} comments={comments} />} />
+            <Route path='/images/:id' element={<HomePage images={images} setImages={setImages} comments={comments} />} />
           </Routes>
       </UserContext.Provider>  
     </div>
