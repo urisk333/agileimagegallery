@@ -54,7 +54,7 @@ npm start
 ## Notes
 
 For adding the pictures, use Unsplash.com free photo library, where you are adding just the last part of the link (highligthed) in the input.
-Example: https://unsplash.com/photos/**bn-D2bCvpik**
+Example: https://unsplash.com/photos/ **bn-D2bCvpik**
 
 # Tech stack
 
