@@ -12,24 +12,7 @@ body {
   font-size: 16px;
   background-image: url("./Assets/background_pic.png");
   background-repeat: repeat;
-}
-
-body::-webkit-scrollbar {
-  width: 24px;
-}
-
-body::-webkit-scrollbar-track {
-  background: white;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #fec210;
-  border-radius: 12px;
-  border: 1px solid black;
-}
-
-html {
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 button,
@@ -44,4 +27,23 @@ button:hover {
 
 a:active {
   transition: 200ms, ease;
+}
+
+@media screen and (max-width: 769px) {
+  * body::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #fec210;
+    border-radius: 2px;
+  }
+
+  html {
+    overflow-y: scroll;
+  }
 }

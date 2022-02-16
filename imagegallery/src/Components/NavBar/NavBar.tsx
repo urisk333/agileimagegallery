@@ -3,7 +3,11 @@ import { useContext } from 'react';
 import { UserContext } from '../../Context/Context';
 import { Link } from 'react-router-dom';
 
-function NavBar () {
+interface IProps {
+  setError: (value: string) => void
+}
+
+function NavBar ({ setError }: IProps) {
 
   const { user, setUser } = useContext(UserContext);
 
@@ -14,6 +18,7 @@ function NavBar () {
       password: '',
       image: ''
     });
+    setError('');
   }
 
   return (

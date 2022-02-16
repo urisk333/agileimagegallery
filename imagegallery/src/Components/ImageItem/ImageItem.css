@@ -23,3 +23,50 @@
 .item-image-description {
   margin-top: 20px;
 }
+
+@media screen and (max-width: 1223px) {
+  .image-item-container {
+    width: 580px;
+    height: 400px;
+  }
+
+  .item-image-picture {
+    width: 420px;
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .image-item-container {
+    width: 550px;
+    height: 370px;
+  }
+
+  .item-image-picture {
+    width: 400px;
+    height: 240px;
+    margin-top: 65px;
+  }
+
+  .item-image-description {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 541px) {
+  .image-item-container {
+    width: 280px;
+    height: 200px;
+  }
+
+  .item-image-picture {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 26px;
+  }
+
+  .item-image-description {
+    margin-top: 20px;
+  }
+}

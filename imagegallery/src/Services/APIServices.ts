@@ -9,8 +9,6 @@ function fetchRequest<T> (path: string, options?: RequestInit): Promise<T> {
     .catch(err => console.log('Error: ', err));
 }
 
-// Will need to update some of the APIServices
-
 function getUsers (): Promise<User[]> {
   return fetchRequest('/users');
 }
@@ -37,7 +35,7 @@ function addComment (comment: Comment): Promise<Comment> {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({comment})
+    body: JSON.stringify({...comment})
   });
 }
 

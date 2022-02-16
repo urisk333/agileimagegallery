@@ -16,7 +16,8 @@ export type Image = {
 export type Comment = {
   id: number,
   content: string,
-  imageId: number
+  imageId: number,
+  userId: number
 }
 
 export type UserContextState = {

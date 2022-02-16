@@ -8,9 +8,10 @@ import { LoginData } from '../../Types/Types';
 interface IProps {
   userLogin(loginData: LoginData): void,
   error: string
+  setError: (value: string) => void
 }
 
-function LoginForm ({ userLogin, error }: IProps) {
+function LoginForm ({ userLogin, error, setError }: IProps) {
 
   const [loginData, setLoginData] = useState<LoginData>({email: '', password: ''});
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ function LoginForm ({ userLogin, error }: IProps) {
 
   function handleCancel () {
     navigate("/");
+    setError('');
   }
 
   function valid (item: string, validIcon: string, invalidIcon: string) {

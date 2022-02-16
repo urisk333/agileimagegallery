@@ -18,18 +18,20 @@ function ImageItem () {
   const [image, setImage] = useState<Image>(initialImage);
   const { user } = useContext(UserContext);
   const params = useParams(); 
+  const id = Number(params.id);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const id = Number(params.id);
-  //     const renderImage = await APIService.getOneImage(id);
-  //     setImage(renderImage);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      if (id) {
+        const renderImage = await APIService.getOneImage(id);
+        setImage(renderImage);
+      }
+    })();
+  }, [id, image]);
 
   return (
     <div className='image-item-container'>
-      {user.email != '' &&
+      {user.email && (params.id != undefined) &&
       <div className='image-item'>
         <div className='item-image-box'>
           <img className='item-image-picture' src={image.image} alt={image.name} />

@@ -2,16 +2,15 @@ import './HomePage.css';
 import APIServices from '../../Services/APIServices';
 import ImageItem from 'Components/ImageItem/ImageItem';
 import ReviewPage from 'Components/ReviewPage/ReviewPage';
-import { Image, Comment } from '../../Types/Types';
-import { useState, useContext } from 'react';
+import { Image } from '../../Types/Types';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faMessage, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMagnifyingGlass, faMessage, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 interface IProps {
   images: Image[],
-  comments: Comment[],
   setImages: (images: Image[]) => void
 }
 
@@ -23,7 +22,7 @@ const initialImage = {
   userId: 0
 }
 
-function HomePage ({ images, setImages, comments }: IProps) {
+function HomePage ({ images, setImages }: IProps) {
 
   const [imageName, setImageName] = useState('');
   const [searchImages, setSearchImages] = useState<Image[]>([]);
@@ -31,50 +30,67 @@ function HomePage ({ images, setImages, comments }: IProps) {
   const [isReviewChecked, setIsReviewChecked] = useState(false);
   const [isReviewBoxChecked, setIsReviewBoxChecked] = useState(false);
   const [name, setName] = useState('');
-  const [image, setImage] = useState('');
+  const [imageLink, setImageLink] = useState('');
   const [description, setDescription] = useState('');
-  const [newImage, setNewImage] = useState<Image>(initialImage);
+  const [clickedImage, setClickedImage] = useState<Image>(initialImage);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setImageName(event.target.value);
+  useEffect(() => {
+    setImages(images)
+  }, [images, isReviewChecked]);
+  
+  const searchImage = async (input: string, array: Image[]) => {
+    const filteredImages = await array.filter((image) => image.name.toLowerCase().includes(input.toLowerCase()));
+    setSearchImages(filteredImages);
   };
 
-  const searchImage = async () => {
-    const filteredImages = await images.filter((image) => image.name.toLowerCase().includes(imageName.toLowerCase()));
-    setSearchImages(filteredImages);
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setImageName(event.target.value);
+    searchImage(imageName, images);
   };
 
   const handleAddImage = () => {
     setIsAddImageChecked(!isAddImageChecked);
   };
 
-  async function addImage (newImage: Image): Promise<Image> {
-
-    const imageURL = `https://source.unsplash.com/${image}`;
-    setNewImage({
+  async function addImage (): Promise<Image> {
+    const imageURL = `https://source.unsplash.com/${imageLink}`;
+    const newImageObject = {
       id: 0,
       name: name,
       image: imageURL,
       description: description,
       userId: user.id
-    });
-    const addedImage = await APIServices.addImage(newImage);
+    };
+    const addedImage = await APIServices.addImage(newImageObject);
+    setImages([...images, {...addedImage}]);
     return addedImage;
   }
 
-  async function handleSubmit(e: React.SyntheticEvent) {
+  function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    await addImage(newImage);
+    addImage();
     setName('');
-    setImage('');
+    setImageLink('');
     setDescription('');
+  }
+
+  function openSidebar () {
+    const element = document.getElementById("image-list-visible");
+    if (element.style.display === "none") {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
   }
 
   return (
     <div className='homepage-container'>
-      <div className='image-list'>
+      <button className='menu-button' onClick={() => openSidebar()}>
+        <FontAwesomeIcon className="fa-solid fa-bars" icon={faBars} />
+      </button>
+      <div className='image-list' id='image-list-visible'>
         <h2>Image gallery</h2>
         <div className="search-input-box">
           <input
@@ -84,7 +100,6 @@ function HomePage ({ images, setImages, comments }: IProps) {
             value={imageName}
             onChange={(event) => {
               inputHandler(event)
-              searchImage()
             }}
           />
           <FontAwesomeIcon className="fa-solid fa-magnifying-glass icon" icon={faMagnifyingGlass} />
@@ -100,14 +115,16 @@ function HomePage ({ images, setImages, comments }: IProps) {
                 className="add-image-input align"
                 type="text"
                 placeholder="Enter image file..."
-                value={image}
-                onChange={e => setImage(e.target.value)}>
+                maxLength={30}
+                value={imageLink}
+                onChange={e => setImageLink(e.target.value)}>
               </input>
               <label className="add-image-label">Name:</label>
               <input
                 className="add-image-input align"
                 type="text"
                 placeholder="Enter image name..."
+                maxLength={12}
                 value={name}
                 onChange={e => setName(e.target.value)}>
               </input>
@@ -115,6 +132,7 @@ function HomePage ({ images, setImages, comments }: IProps) {
               <textarea
                 className="add-image-input textarea-align"
                 placeholder="Enter image description..."
+                maxLength={50}
                 value={description}
                 onChange={e => setDescription(e.target.value)}>
               </textarea>
@@ -137,6 +155,7 @@ function HomePage ({ images, setImages, comments }: IProps) {
               <button className='gallery-button' onClick={() => {
                 navigate(`/images/${image.id}`);
                 setIsReviewChecked(!isReviewChecked);
+                setClickedImage(image);
                 <ImageItem />
               }}>Review</button>
             </div>
@@ -153,13 +172,14 @@ function HomePage ({ images, setImages, comments }: IProps) {
               <button className='gallery-button' onClick={() => {
                 navigate(`/images/${image.id}`);
                 setIsReviewChecked(!isReviewChecked);
+                setClickedImage(image);
                 <ImageItem />
               }}>Review</button>
             </div>
           )))}
       </div>
-      <div className='review-item-container'>
-        {!isReviewChecked && <ImageItem />}
+      {user.email && <div className='review-item-container'>
+        {clickedImage && <ImageItem />}
         <div className='review-button-box'>
           {isReviewBoxChecked ? 
           <button className='review-button' onClick={() => setIsReviewBoxChecked(!isReviewBoxChecked)}>
@@ -173,7 +193,7 @@ function HomePage ({ images, setImages, comments }: IProps) {
         <div className='review-box-align'>
         {!isReviewBoxChecked && <ReviewPage images={images} />}
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

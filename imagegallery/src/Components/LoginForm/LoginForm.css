@@ -102,3 +102,36 @@ span {
 .login-button:hover {
   color: black;
 }
+
+@media screen and (max-width: 767px) {
+  .login-container {
+    width: 320px;
+  }
+
+  .login-container p .icon {
+    margin-left: 75px;
+  }
+
+  span {
+    padding-left: 105px;
+  }
+
+  .login-form-title {
+    padding: 20px 0 0 26px;
+  }
+
+  .login-label {
+    padding: 20px 0 4px 26px;
+    font-weight: bolder;
+  }
+
+  .login-container {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 413px) {
+  .login-container {
+    width: 280px;
+  }
+}

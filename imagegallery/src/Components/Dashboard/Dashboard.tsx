@@ -4,7 +4,7 @@ function Dashboard () {
 
   return (
     <div className='dashboard-container'>
-      <h1>Welcome to Agilno image gallery!</h1>
+      <h1>Welcome to Agilno gallery!</h1>
     </div>
   );
 }

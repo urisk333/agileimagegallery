@@ -8,11 +8,12 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   email    String
   password String
   image    String
   images   Image[]
+  comments Comment[]
 }
 
 model Image {
@@ -30,4 +31,6 @@ model Comment {
   content String
   imageId Int
   images  Image  @relation(fields: [imageId], references: [id])
+  userId  Int
+  users   User   @relation(fields: [userId], references: [id])
 }

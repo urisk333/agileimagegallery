@@ -84,12 +84,16 @@ const getOneImage = async (req: Request, res: Response): Promise<void> => {
 
 const addComment = async (req: Request, res: Response): Promise<void> => {
 	try {
-		const { id } = req.body;
-		const trip = await prisma.comment.create({
-			data: req.body
+		const { content, imageId, userId } = req.body;
+		const newComment = await prisma.comment.create({
+			data: {
+						content: content,
+						imageId: imageId,
+						userId: userId				
+			}		
 		});
 		res.status(201);
-		res.send(trip);
+		res.send(newComment);
 	} catch (err) {
 		console.error('error', err);
 		res.sendStatus(500);
