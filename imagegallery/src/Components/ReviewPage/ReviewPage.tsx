@@ -131,7 +131,7 @@ function ReviewPage ({ images }: IProps) {
             <div className="comment">
               <div className={user.id === comment.userId ? "comment-box me" : "comment-box you"}>
                 <div className='other-user-box'>
-                  <img className='other-user-image' src={user.id != comment.userId ? user.image : null} alt={user.email} />
+                  <img className='other-user-image' src={user.image} alt={user.email} />
                 </div>
                 <div className='comment-item my-comment'>
                 {comment.content}

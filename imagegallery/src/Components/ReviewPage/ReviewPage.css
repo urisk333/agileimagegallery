@@ -28,7 +28,7 @@
   font-style: normal;
   font-weight: bolder;
   color: #277a7f;
-  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .comment-input:focus {
@@ -92,13 +92,14 @@
   margin-right: 0;
 }
 
-.me .other-user-image {
+.me .other-user-box {
   visibility: hidden;
 }
 
 .you .other-user-image {
   margin: 0 6px 0 4px;
   line-height: 40px;
+  visibility: visible;
 }
 
 .you .comment-item {
@@ -122,7 +123,7 @@
   visibility: hidden;
 }
 
-.comment:hover > .comment-button-box {
+.comment:hover > .mine {
   visibility: visible;
 }
 
