@@ -123,7 +123,7 @@ function HomePage ({ images, setImages }: IProps) {
               <input
                 className="add-image-input align"
                 type="text"
-                placeholder="Enter image name..."
+                placeholder="Enter image name... (max. 12 characters)"
                 maxLength={12}
                 value={name}
                 onChange={e => setName(e.target.value)}>
@@ -131,7 +131,7 @@ function HomePage ({ images, setImages }: IProps) {
               <label className="add-image-label">Description:</label>
               <textarea
                 className="add-image-input textarea-align"
-                placeholder="Enter image description..."
+                placeholder="Enter image description... (max. 50 characters)"
                 maxLength={50}
                 value={description}
                 onChange={e => setDescription(e.target.value)}>

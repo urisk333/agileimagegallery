@@ -136,7 +136,7 @@ function ReviewPage ({ images }: IProps) {
                   className="update-input"
                   type="text"
                   placeholder="Update your comment..."
-                  defaultValue={comment.content || ''}
+                  defaultValue={comment.content}
                   onChange={(e) => setUpdatedContent(e.target.value)}
                   >
                 </input>

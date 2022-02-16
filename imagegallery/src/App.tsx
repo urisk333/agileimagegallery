@@ -1,4 +1,3 @@
-import './App.css';
 import NavBar from 'Components/NavBar/NavBar';
 import LoginForm from 'Components/LoginForm/LoginForm';
 import Dashboard from 'Components/Dashboard/Dashboard';
