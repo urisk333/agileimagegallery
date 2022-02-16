@@ -63,9 +63,16 @@ function ReviewPage ({ images }: IProps) {
     return newAddedComment;
   }
 
+  const img = document.getElementById("resize-image");
+  function smallerImg () {
+    img.style.transform = "scale(0.8)";
+    img.style.transition = "transform 0.25s ease";
+  }
+
   function handleComment (e: React.SyntheticEvent) {
     e.preventDefault();
     addComment();
+    smallerImg();
   }
 
   async function deleteComment (id: number): Promise<void> {
@@ -111,7 +118,7 @@ function ReviewPage ({ images }: IProps) {
                 {image.name}
               </div>
               <div className='image-review-picture'>
-                <img className='image-review-picture' src={image.image} alt={image.name} />
+                <img id='resize-image' className='image-review-picture' src={image.image} alt={image.name} />
               </div>
             </div>
           )
