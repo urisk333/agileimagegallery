@@ -53,8 +53,10 @@ npm start
 
 ## Notes
 
-For adding the pictures, use Unsplash.com free photo library, where you are adding just the last part of the link (highligthed) in the input.
-Example: https://unsplash.com/photos/ **bn-D2bCvpik**
+1. For adding the pictures, use Unsplash.com free photo library, where you are adding just the last part of the link (highligthed) in the input.
+   Example: https://unsplash.com/photos/ **bn-D2bCvpik**
+
+2. For manually populating the database with the users, use Postman and **addUser** method from Server/Controllers
 
 # Tech stack
 
