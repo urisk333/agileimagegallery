@@ -53,9 +53,11 @@ npm start
 
 ## Notes
 
-1. For password, becuase of validation, you need to populate the database with the password which contains 1 capital letter,
+1. For password, becuase of validation, you need to populate the database with the password which contains 1 capital letter, 1 number, 1 special character from this batch (!, @, #, $, %, &, ^, ?, \*) and it should be longer than 8 characters.
 
-2. For adding the pictures, use Unsplash.com free photo library, where you are adding just the last part of the link (highligthed) in the input.
+2. For manually populating the database with the users, use Postman and **addUser** method from Server/Controllers
+
+3. For adding the pictures, use Unsplash.com free photo library, where you are adding just the last part of the link (highligthed) in the input.
    Example: https://unsplash.com/photos/ **bn-D2bCvpik**
 
 # Tech stack
