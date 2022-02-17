@@ -53,10 +53,10 @@ npm start
 
 ## Notes
 
-1. For adding the pictures, use Unsplash.com free photo library, where you are adding just the last part of the link (highligthed) in the input.
-   Example: https://unsplash.com/photos/ **bn-D2bCvpik**
+1. For password, becuase of validation, you need to populate the database with the password which contains 1 capital letter,
 
-2. For manually populating the database with the users, use Postman and **addUser** method from Server/Controllers
+2. For adding the pictures, use Unsplash.com free photo library, where you are adding just the last part of the link (highligthed) in the input.
+   Example: https://unsplash.com/photos/ **bn-D2bCvpik**
 
 # Tech stack
 
