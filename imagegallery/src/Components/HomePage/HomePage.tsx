@@ -156,7 +156,7 @@ function HomePage ({ images, setImages }: IProps) {
                 navigate(`/images/${image.id}`);
                 setIsReviewChecked(!isReviewChecked);
                 setClickedImage(image);
-                <ImageItem isReviewChecked={isReviewChecked} />
+                <ImageItem />
               }}>Review</button>
             </div>
           )))
@@ -173,13 +173,13 @@ function HomePage ({ images, setImages }: IProps) {
                 navigate(`/images/${image.id}`);
                 setIsReviewChecked(!isReviewChecked);
                 setClickedImage(image);
-                <ImageItem isReviewChecked={isReviewChecked} />
+                <ImageItem />
               }}>Review</button>
             </div>
           )))}
       </div>
       {user.email && <div className='review-item-container'>
-        {clickedImage && <ImageItem isReviewChecked={isReviewChecked} />}
+        {clickedImage && <ImageItem />}
         <div className='review-button-box'>
           {!isReviewBoxChecked ? 
           <button className='review-button' onClick={() => setIsReviewBoxChecked(!isReviewBoxChecked)}>
