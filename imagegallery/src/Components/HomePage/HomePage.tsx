@@ -2,7 +2,7 @@ import './HomePage.css';
 import APIServices from '../../Services/APIServices';
 import ImageItem from 'Components/ImageItem/ImageItem';
 import ReviewPage from 'Components/ReviewPage/ReviewPage';
-import { Image } from '../../Types/Types';
+import { Image, User } from '../../Types/Types';
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/Context';
@@ -11,7 +11,8 @@ import { faBars, faMagnifyingGlass, faMessage, faTimes } from '@fortawesome/free
 
 interface IProps {
   images: Image[],
-  setImages: (images: Image[]) => void
+  setImages: (images: Image[]) => void,
+  users: User[]
 }
 
 const initialImage = {
@@ -22,7 +23,7 @@ const initialImage = {
   userId: 0
 }
 
-function HomePage ({ images, setImages }: IProps) {
+function HomePage ({ images, setImages, users }: IProps) {
 
   const [imageName, setImageName] = useState('');
   const [searchImages, setSearchImages] = useState<Image[]>([]);
@@ -191,7 +192,7 @@ function HomePage ({ images, setImages }: IProps) {
           </button>}
         </div>
         <div className='review-box-align'>
-        {isReviewBoxChecked && <ReviewPage images={images} />}
+        {isReviewBoxChecked && <ReviewPage images={images} users={users} />}
         </div>
       </div>}
     </div>

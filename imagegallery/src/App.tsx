@@ -53,8 +53,8 @@ function App () {
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<LoginForm userLogin={userLogin} error={error} setError={setError} />} />
-            <Route path='/homepage' element={<HomePage images={images} setImages={setImages} />} />
-            <Route path='/images/:id' element={<HomePage images={images} setImages={setImages} />} />
+            <Route path='/homepage' element={<HomePage images={images} setImages={setImages} users={users} />} />
+            <Route path='/images/:id' element={<HomePage images={images} setImages={setImages} users={users} />} />
           </Routes>
       </UserContext.Provider>  
     </div>

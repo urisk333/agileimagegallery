@@ -1,6 +1,6 @@
 import './ReviewPage.css';
 import APIService from 'Services/APIServices';
-import { Image, Comment } from '../../Types/Types';
+import { Image, Comment, User } from '../../Types/Types';
 import { useContext, useState, useEffect, useRef } from 'react';
 import { UserContext } from '../../Context/Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 
 interface IProps {
   images: Image[],
+  users: User[]
 }
 
 const initialComment = {
@@ -18,7 +19,7 @@ const initialComment = {
   userId: 0
 }
 
-function ReviewPage ({ images }: IProps) {
+function ReviewPage ({ images, users }: IProps) {
 
   const [newComment, setNewComment] = useState<string>(''); // Comment input
   const [comments, setComments] = useState<Comment[]>([]);
@@ -130,9 +131,11 @@ function ReviewPage ({ images }: IProps) {
             {id === comment.imageId && 
             <div className="comment">
               <div className={user.id === comment.userId ? "comment-box me" : "comment-box you"}>
-                <div className='other-user-box'>
-                  <img className='other-user-image' src={user.image} alt={user.email} />
+                {users.map(user => user.id === comment.userId ?
+                <div className='other-user-box' key={user.id}>
+                  <img className='other-user-image' src={user.image} alt="Profile picture" />
                 </div>
+                : null)}
                 <div className='comment-item my-comment'>
                 {comment.content}
                 </div>
