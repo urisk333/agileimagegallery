@@ -5,6 +5,10 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../Context/Context';
 
+interface IProps {
+  isReviewChecked: boolean
+}
+
 const initialImage = {
   id: 0,
   name: '',
@@ -13,7 +17,7 @@ const initialImage = {
   userId: 0
 }
 
-function ImageItem () {
+function ImageItem ({ isReviewChecked }: IProps) {
 
   const [image, setImage] = useState<Image>(initialImage);
   const { user } = useContext(UserContext);
@@ -30,14 +34,16 @@ function ImageItem () {
   }, [id, image]);
 
   return (
-    <div className='image-item-container'>
-      {user.email && (params.id != undefined) &&
-      <div className='image-item'>
-        <div className='item-image-box'>
-          <img className='item-image-picture' src={image.image} alt={image.name} />
-        </div>
-        <div className='item-image-description'>
-          {image.description}
+    <div className='image-wrapper'>
+      {user.email && (params.id != undefined) && isReviewChecked &&
+      <div className='image-item-container'>
+        <div className='image-item'>
+          <div className='item-image-box'>
+            <img className='item-image-picture' src={image.image} alt={image.name} />
+          </div>
+          <div className='item-image-description'>
+            {image.description}
+          </div>
         </div>
       </div>}
     </div>

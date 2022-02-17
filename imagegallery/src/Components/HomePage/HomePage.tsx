@@ -156,7 +156,7 @@ function HomePage ({ images, setImages }: IProps) {
                 navigate(`/images/${image.id}`);
                 setIsReviewChecked(!isReviewChecked);
                 setClickedImage(image);
-                <ImageItem />
+                <ImageItem isReviewChecked={isReviewChecked} />
               }}>Review</button>
             </div>
           )))
@@ -173,15 +173,15 @@ function HomePage ({ images, setImages }: IProps) {
                 navigate(`/images/${image.id}`);
                 setIsReviewChecked(!isReviewChecked);
                 setClickedImage(image);
-                <ImageItem />
+                <ImageItem isReviewChecked={isReviewChecked} />
               }}>Review</button>
             </div>
           )))}
       </div>
       {user.email && <div className='review-item-container'>
-        {clickedImage && <ImageItem />}
+        {clickedImage && <ImageItem isReviewChecked={isReviewChecked} />}
         <div className='review-button-box'>
-          {isReviewBoxChecked ? 
+          {!isReviewBoxChecked ? 
           <button className='review-button' onClick={() => setIsReviewBoxChecked(!isReviewBoxChecked)}>
             <FontAwesomeIcon className="fa-solid fa-message icon" icon={faMessage} />
           </button>
@@ -191,7 +191,7 @@ function HomePage ({ images, setImages }: IProps) {
           </button>}
         </div>
         <div className='review-box-align'>
-        {!isReviewBoxChecked && <ReviewPage images={images} />}
+        {isReviewBoxChecked && <ReviewPage images={images} />}
         </div>
       </div>}
     </div>
